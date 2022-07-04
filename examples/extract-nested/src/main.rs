@@ -56,13 +56,17 @@ async fn edit<'a>(good_man: GoodMan<'a>, res: &mut Response) {
 #[derive(Serialize, Deserialize, Extractible, Debug)]
 #[extract(default_source(from = "body", format = "json"))]
 struct GoodMan<'a> {
+    // 这个宏表示 id 就是 url 中的参数，例如: http://localhost:7878/95，id 就等于 95
     #[extract(source(from = "param"))]
     id: i64,
+    // 这个宏表示 username 就是 query 查询参数 (Query Params)
     #[extract(source(from = "query"))]
     username: &'a str,
+    // 下面这几个没被宏修饰的，默认传参就是 application/json (format = json )
     first_name: String,
     last_name: String,
     lovers: Vec<String>,
+    // 这个宏就是将 请求参数全部解析到结构体
     #[extract(source(from = "request"))]
     nested: Nested<'a>,
 }
