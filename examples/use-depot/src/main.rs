@@ -7,6 +7,7 @@ async fn set_user(req: &mut Request, depot: &mut Depot, res: &mut Response, ctrl
 }
 #[fn_handler]
 async fn hello_world(depot: &mut Depot) -> String {
+    // 从请求中取出存储在 Depot 中的数据
     format!("Hello {}", depot.get::<&str>("user").copied().unwrap_or_default())
 }
 

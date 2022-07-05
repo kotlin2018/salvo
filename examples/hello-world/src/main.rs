@@ -37,7 +37,7 @@ fn route() -> Router {
 mod tests {
     use salvo::prelude::*;
     use salvo::test::{ResponseExt, TestClient};
-
+    
     #[tokio::test]
     async fn test_hello_world() {
         let service = Service::new(super::route());
