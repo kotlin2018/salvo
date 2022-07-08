@@ -38,11 +38,6 @@ pub fn fn_handler(args: TokenStream, input: TokenStream) -> TokenStream {
     handler::fn_handler(args, item_fn)
 }
 
-// #[proc_macro_attribute]
-// pub fn handler(args: TokenStream, input: TokenStream) -> TokenStream {
-
-// }
-
 /// Generate code for extractible type.
 #[proc_macro_derive(Extractible, attributes(extract))]
 pub fn derive_extractible(input: TokenStream) -> TokenStream {
